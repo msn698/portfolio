@@ -41,16 +41,16 @@ const projectsData = [
     gitUrl: "https://github.com/msn698/Python-Chrome-Dinosaur-Game",
     previewUrl: "/",
   },
-  /* 
   {
     id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
+    title: "BMI Weight Calculator",
+    description: "Calculate Your BMI and Weight Category using Python",
     image: "/images/projects/5.png",
-    tag: ["All", "Web"],
+    tag: ["All", "Python"],
     gitUrl: "/",
     previewUrl: "/",
   },
+  /* 
   {
     id: 6,
     title: "Full-stack Roadmap",
