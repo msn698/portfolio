@@ -30,7 +30,7 @@ const projectsData = [
     image: "/images/projects/3.png",
     tag: ["All", "Python"],
     gitUrl: "https://github.com/msn698/internet-speed-test/",
-    previewUrl: "/",
+    previewUrl: "https://github.com/msn698/internet-speed-test/",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const projectsData = [
     image: "/images/projects/4.png",
     tag: ["All", "Python"],
     gitUrl: "https://github.com/msn698/Python-Chrome-Dinosaur-Game",
-    previewUrl: "/",
+    previewUrl: "https://github.com/msn698/Python-Chrome-Dinosaur-Game",
   },
   {
     id: 5,
@@ -47,8 +47,8 @@ const projectsData = [
     description: "Calculate Your BMI and Weight Category using Python",
     image: "/images/projects/5.png",
     tag: ["All", "Python"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/msn698/MBI-Calculator",
+    previewUrl: "https://github.com/msn698/MBI-Calculator",
   },
   /* 
   {
