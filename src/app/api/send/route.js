@@ -9,11 +9,12 @@ export async function POST(req, res) {
   const { email, subject, message } = await req.json();
   console.log(email, subject, message);
   try {
-    // Send email to the owner
+    // Send email to the owner with the user's email as reply-to
     await resend.emails.send({
       from: fromEmail,
       to: [ownerEmail],
-      subject: subject,
+      reply_to: email, // Owner's reply goes to the user
+      subject: `New message: ${subject}`,
       react: (
         <>
           <h1>{subject}</h1>
@@ -23,10 +24,11 @@ export async function POST(req, res) {
       ),
     });
 
-    // Send confirmation email to the user
+    // Send confirmation email to the user with the owner's email as reply-to
     const data = await resend.emails.send({
       from: fromEmail,
       to: [email],
+      reply_to: ownerEmail, // User's reply goes to the owner
       subject: `Re: ${subject}`,
       react: (
         <>
