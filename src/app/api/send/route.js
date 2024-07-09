@@ -14,11 +14,12 @@ export async function POST(req, res) {
       from: fromEmail,
       to: [ownerEmail],
       reply_to: email, // Owner's reply goes to the user
-      subject: `New message: ${subject}`,
+      subject: subject, // Subject remains the same
       react: (
         <>
-          <h1>{subject}</h1>
-          <p>New message from: {email}</p>
+          <h1>Thank you for contacting us!</h1>
+          <p>We have received your message and will get back to you shortly.</p>
+          <p>Your message:</p>
           <p>{message}</p>
         </>
       ),
