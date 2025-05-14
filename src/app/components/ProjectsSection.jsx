@@ -24,6 +24,15 @@ const projectsData = [
     previewUrl: "/",
   },
   {
+    id: 7,
+    title: "Snake Game",
+    description: "A classic Snake game built with React and TypeScript. Control the snake, eat food, and avoid collisions!",
+    image: "/images/projects/snakegame.png",
+    tag: ["All", "Web", "JavaScript"],
+    gitUrl: "https://github.com/msn698/snake-game",
+    previewUrl: "https://snakegame.msaeed.tech/",
+  },
+  {
     id: 3,
     title: "Recipe Sharing Website",
     description: "Website for sharing recipes",
@@ -58,15 +67,6 @@ const projectsData = [
     tag: ["All", "Python"],
     gitUrl: "https://github.com/msn698/MBI-Calculator",
     previewUrl: "https://github.com/msn698/MBI-Calculator",
-  },
-  {
-    id: 7,
-    title: "Snake Game",
-    description: "A classic Snake game built with React and TypeScript. Control the snake, eat food, and avoid collisions!",
-    image: "/images/projects/snakegame.png",
-    tag: ["All", "Web", "JavaScript"],
-    gitUrl: "https://github.com/msn698/snake-game",
-    previewUrl: "https://snakegame.msaeed.tech/",
   },
   /* 
   {
