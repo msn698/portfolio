@@ -44,8 +44,12 @@ async function sendEmail(emailData) {
 export async function POST(req) {
   if (!RESEND_API_KEY || !fromEmail || !ownerEmail) {
     return NextResponse.json(
-      { success: false, error: "Email service not configured." },
-      { status: 500 }
+      {
+        success: false,
+        error: "Email service not configured.",
+        code: "CONFIG_MISSING",
+      },
+      { status: 503 }
     );
   }
 
@@ -109,8 +113,12 @@ export async function POST(req) {
   } catch (error) {
     console.error("Error sending email:", error);
     return NextResponse.json(
-      { success: false, error: "Could not send message." },
-      { status: 500 }
+      {
+        success: false,
+        error: "Could not send message right now. Please try again shortly.",
+        code: "EMAIL_SEND_FAILED",
+      },
+      { status: 502 }
     );
   }
 }

@@ -9,6 +9,7 @@ const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const fallbackContactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,14 +31,25 @@ const EmailSection = () => {
         body: JSON.stringify(data),
       });
 
+      const payload = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error("Failed to send message");
+        if (payload?.code === "CONFIG_MISSING") {
+          throw new Error(
+            "Contact form is temporarily unavailable. Please use direct email below."
+          );
+        }
+
+        throw new Error(payload?.error || "Failed to send message");
       }
 
       setEmailSubmitted(true);
       e.target.reset();
     } catch (error) {
-      setSubmitError("Could not send your message right now. Please try again.");
+      setSubmitError(
+        error?.message ||
+          "Could not send your message right now. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -130,9 +142,17 @@ const EmailSection = () => {
               />
             </div>
             {submitError && (
-              <p className="text-red-400 text-sm mb-4" role="alert">
-                {submitError}
-              </p>
+              <div className="text-red-400 text-sm mb-4" role="alert">
+                <p>{submitError}</p>
+                {fallbackContactEmail && (
+                  <a
+                    href={`mailto:${fallbackContactEmail}`}
+                    className="underline text-red-300"
+                  >
+                    Email directly: {fallbackContactEmail}
+                  </a>
+                )}
+              </div>
             )}
             <button
               type="submit"
