@@ -100,11 +100,14 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
+    <section id="projects" className="py-10">
+      <h2 className="text-center text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+        Selected Projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
+      <p className="text-center text-slate-400 max-w-2xl mx-auto mb-6">
+        A mix of product builds and practical tools focused on performance and usability.
+      </p>
+      <div className="text-white flex flex-wrap justify-center items-center gap-2 py-4">
         <ProjectTag
           onClick={handleTagChange}
           name="All"

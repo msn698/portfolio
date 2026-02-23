@@ -16,12 +16,30 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:
+    radial-gradient(circle at 10% 10%, rgba(239, 68, 68, 0.12), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(249, 115, 22, 0.1), transparent 35%),
+    linear-gradient(to bottom, #0f0f10, #121212 35%, #121212);
 }
+
+.section-glow {
+  position: relative;
+}
+
+.section-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  background: linear-gradient(120deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.08));
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.6;
+}
+

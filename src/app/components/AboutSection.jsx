@@ -54,16 +54,19 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image
-          src="/images/about-image.png"
-          width={500}
-          height={500}
-          alt="Mohammed Saeed working on web development projects"
-        />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+    <section className="text-white py-10" id="about">
+      <div className="md:grid md:grid-cols-2 gap-8 items-center">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+          <Image
+            src="/images/about-image.png"
+            width={500}
+            height={500}
+            alt="Mohammed Saeed working on web development projects"
+            className="rounded-xl w-full h-auto"
+          />
+        </div>
+        <div className="mt-4 md:mt-0 text-left flex flex-col h-full rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
             I am a Web Developer with a passion for creating
             Interactive and Responsive web applications. I have experience
