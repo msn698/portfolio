@@ -7,31 +7,39 @@ import Image from "next/image";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
+    setIsSubmitting(true);
+
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
 
-    if (response.status === 200) {
-      console.log("Message sent.");
       setEmailSubmitted(true);
+      e.target.reset();
+    } catch (error) {
+      setSubmitError("Could not send your message right now. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -51,10 +59,18 @@ const EmailSection = () => {
           try my best to get back to you!
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/msn698/">
+          <Link
+            href="https://github.com/msn698/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="https://www.linkedin.com/in/mohammed-saeed-0a2199211">
+          <Link
+            href="https://www.linkedin.com/in/mohammed-saeed-0a2199211"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
@@ -113,11 +129,17 @@ const EmailSection = () => {
                 placeholder="Let's talk about..."
               />
             </div>
+            {submitError && (
+              <p className="text-red-400 text-sm mb-4" role="alert">
+                {submitError}
+              </p>
+            )}
             <button
               type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              disabled={isSubmitting}
+              className="bg-primary-500 hover:bg-primary-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         )}
