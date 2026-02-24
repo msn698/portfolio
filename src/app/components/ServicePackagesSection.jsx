@@ -4,8 +4,8 @@ import Link from "next/link";
 const packages = [
   {
     name: "Starter",
-    price: "From $299",
-    href: "/services/restaurant-website-dubai",
+    price: "From AED 1,099",
+    href: "/services/starter",
     points: [
       "1-page modern website",
       "Mobile-first responsive design",
@@ -15,8 +15,8 @@ const packages = [
   },
   {
     name: "Growth",
-    price: "From $699",
-    href: "/services/website-redesign-dubai",
+    price: "From AED 2,599",
+    href: "/services/growth",
     featured: true,
     points: [
       "Multi-section/business website",
@@ -28,7 +28,7 @@ const packages = [
   {
     name: "Custom",
     price: "Custom quote",
-    href: "/#contact",
+    href: "/services/custom",
     points: [
       "Advanced integrations",
       "Custom features and automations",

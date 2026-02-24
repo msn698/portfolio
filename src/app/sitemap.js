@@ -10,8 +10,9 @@ export default function sitemap() {
   }));
 
   const serviceUrls = [
-    "/services/restaurant-website-dubai",
-    "/services/website-redesign-dubai",
+    "/services/starter",
+    "/services/growth",
+    "/services/custom",
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date(),
