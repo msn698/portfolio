@@ -37,33 +37,16 @@ const packages = [
   },
 ];
 
-const themes = [
-  {
-    name: "Theme 1 — Indigo Pop (original)",
-    gradient: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #0f172a 100%)",
-    border: "rgba(255,255,255,0.16)",
-    circle: "#111827",
-    ellipse: "#0b1220",
-  },
-  {
-    name: "Theme 3 — Sunset Neon",
-    gradient: "linear-gradient(135deg, #ff6a3d 0%, #f43f5e 45%, #1f1147 100%)",
-    border: "rgba(255,184,163,0.36)",
-    circle: "#2a1024",
-    ellipse: "#1f0e1c",
-  },
-  {
-    name: "Theme 8 — Midnight Gold Accent",
-    gradient: "linear-gradient(135deg, #1f2937 0%, #111827 55%, #f59e0b 100%)",
-    border: "rgba(251, 191, 36, 0.3)",
-    circle: "#1f2937",
-    ellipse: "#111827",
-  },
-];
+const theme = {
+  gradient: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #0f172a 100%)",
+  border: "rgba(255,255,255,0.16)",
+  circle: "#111827",
+  ellipse: "#0b1220",
+};
 
 const cardVariants = { hover: { scale: 1.05 } };
 
-const SquishyCard = ({ pkg, theme }) => (
+const SquishyCard = ({ pkg }) => (
   <motion.article
     whileHover="hover"
     transition={{ duration: 1, ease: "backInOut" }}
@@ -100,11 +83,11 @@ const SquishyCard = ({ pkg, theme }) => (
       Learn More
     </Link>
 
-    <Background theme={theme} />
+    <Background />
   </motion.article>
 );
 
-const Background = ({ theme }) => (
+const Background = () => (
   <motion.svg
     width="320"
     height="420"
@@ -142,19 +125,14 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Squishy card only — shortlisted color options.
+        Final theme selected: Theme 1.
       </p>
 
-      {themes.map((theme) => (
-        <div key={theme.name} className="mb-10">
-          <h3 className="text-white text-lg font-semibold mb-1">{theme.name}</h3>
-          <div className="grid md:grid-cols-3 gap-4 mt-4">
-            {packages.map((pkg) => (
-              <SquishyCard key={`${theme.name}-${pkg.name}`} pkg={pkg} theme={theme} />
-            ))}
-          </div>
-        </div>
-      ))}
+      <div className="grid md:grid-cols-3 gap-4 mt-4">
+        {packages.map((pkg) => (
+          <SquishyCard key={pkg.name} pkg={pkg} />
+        ))}
+      </div>
     </section>
   );
 };
