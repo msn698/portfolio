@@ -10,6 +10,10 @@ const EmailSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const fallbackContactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappHref = whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Saeed, I want to discuss a project.")}`
+    : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,10 +70,20 @@ const EmailSection = () => {
           Let&apos;s Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+          I&apos;m currently looking for new opportunities. Prefer faster replies?
+          Message me on WhatsApp or use the form below.
         </p>
+
+        {whatsappHref && (
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-4 py-2 mb-4 rounded-lg border border-[#25D366]/60 bg-[#25D366]/10 text-[#C8FAD9] text-sm font-medium hover:bg-[#25D366]/20 transition-colors"
+          >
+            Chat on WhatsApp
+          </a>
+        )}
         <div className="socials flex flex-row gap-2">
           <Link
             href="https://github.com/msn698/"
@@ -107,7 +121,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="you@company.com"
               />
             </div>
             <div className="mb-6">
@@ -123,7 +137,7 @@ const EmailSection = () => {
                 id="subject"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
+                placeholder="Need a website redesign"
               />
             </div>
             <div className="mb-6">
@@ -138,7 +152,7 @@ const EmailSection = () => {
                 id="message"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
+                placeholder="Share your goals, timeline, and budget range..."
               />
             </div>
             {submitError && (

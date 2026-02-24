@@ -31,6 +31,7 @@ RESEND_API_KEY=your_resend_api_key
 FROM_EMAIL=you@yourdomain.com
 OWNER_EMAIL=you@yourdomain.com
 NEXT_PUBLIC_CONTACT_EMAIL=you@yourdomain.com # optional fallback shown on form errors
+NEXT_PUBLIC_WHATSAPP_NUMBER=9715XXXXXXXX # optional WhatsApp CTA (numbers only, no +)
 ```
 
 ## License

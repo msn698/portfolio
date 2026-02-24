@@ -6,6 +6,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const HeroSection = () => {
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const whatsappHref = whatsappNumber
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Saeed, I saw your portfolio and want to discuss a project.")}`
+    : null;
+
   return (
     <section className="pt-6 lg:pt-10" aria-label="Introduction">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-center">
@@ -61,6 +66,17 @@ const HeroSection = () => {
             >
               Start a Project
             </Link>
+            {whatsappHref && (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#25D366]/60 bg-[#25D366]/10 text-[#C8FAD9] font-medium hover:bg-[#25D366]/20 transition-colors"
+                aria-label="Chat on WhatsApp"
+              >
+                WhatsApp Me
+              </a>
+            )}
             <a
               href="/Mohammed_Saeed_CV.pdf"
               download="Mohammed_Saeed_CV.pdf"
