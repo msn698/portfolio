@@ -73,6 +73,55 @@ const themes = [
     circle: "#122f2b",
     ellipse: "#0c241f",
   },
+  {
+    name: "Theme 6 — Royal Violet + Magenta",
+    gradient: "linear-gradient(135deg, #6d28d9 0%, #9333ea 40%, #db2777 100%)",
+    border: "rgba(244, 114, 182, 0.32)",
+    circle: "#32104e",
+    ellipse: "#240d3a",
+  },
+  {
+    name: "Theme 7 — Cyber Blue + Purple",
+    gradient: "linear-gradient(135deg, #2563eb 0%, #4f46e5 45%, #7c3aed 100%)",
+    border: "rgba(147, 197, 253, 0.34)",
+    circle: "#172554",
+    ellipse: "#1e1b4b",
+  },
+  {
+    name: "Theme 8 — Midnight Gold Accent",
+    gradient: "linear-gradient(135deg, #1f2937 0%, #111827 55%, #f59e0b 100%)",
+    border: "rgba(251, 191, 36, 0.3)",
+    circle: "#1f2937",
+    ellipse: "#111827",
+  },
+  {
+    name: "Theme 9 — Deep Crimson Neon",
+    gradient: "linear-gradient(135deg, #7f1d1d 0%, #be123c 45%, #fb7185 100%)",
+    border: "rgba(251, 113, 133, 0.33)",
+    circle: "#3f0f1a",
+    ellipse: "#2e0c14",
+  },
+  {
+    name: "Theme 10 — Teal + Indigo Luxe",
+    gradient: "linear-gradient(135deg, #0f766e 0%, #0891b2 45%, #4338ca 100%)",
+    border: "rgba(45, 212, 191, 0.3)",
+    circle: "#134e4a",
+    ellipse: "#1e3a8a",
+  },
+  {
+    name: "Theme 11 — Graphite + Electric Lime",
+    gradient: "linear-gradient(135deg, #111827 0%, #1f2937 55%, #84cc16 100%)",
+    border: "rgba(163, 230, 53, 0.3)",
+    circle: "#1f2937",
+    ellipse: "#111827",
+  },
+  {
+    name: "Theme 12 — Obsidian + Cyan Pulse",
+    gradient: "linear-gradient(135deg, #0b1120 0%, #111827 50%, #22d3ee 100%)",
+    border: "rgba(34, 211, 238, 0.3)",
+    circle: "#0f172a",
+    ellipse: "#1e293b",
+  },
 ];
 
 const cardVariants = { hover: { scale: 1.05 } };
@@ -156,7 +205,7 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Squishy card only — compare color options.
+        Squishy card only — compare all color options.
       </p>
 
       {themes.map((theme) => (
