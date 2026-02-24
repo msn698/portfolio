@@ -22,13 +22,15 @@ export default function ProjectCaseStudyPage({ params }) {
       <p className="text-slate-300 mb-6">{project.description}</p>
 
       <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 mb-8">
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={1200}
-          height={700}
-          className="w-full h-auto rounded-xl"
-        />
+        <div className="relative w-full aspect-[16/9] rounded-xl bg-[#151515] overflow-hidden">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-contain p-3"
+          />
+        </div>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
