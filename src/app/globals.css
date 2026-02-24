@@ -29,8 +29,6 @@ body {
   background-attachment: fixed;
 }
 
-h1,
-h2,
 .logo-font {
   font-family: var(--font-display), ui-sans-serif, system-ui;
   letter-spacing: 0.005em;
