@@ -43,7 +43,7 @@ function Card({ pkg, variant }) {
 
   const classMap = {
     original: `hover-lift rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
-    squishy: `squishy-card rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
+    squishy: `squishy-card rounded-2xl border p-5 bg-gradient-to-b from-[#1a2233] to-[#101522] ${baseBorder}`,
     glow: `glow-glass-card rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
   };
 
