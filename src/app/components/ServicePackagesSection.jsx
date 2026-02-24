@@ -38,6 +38,49 @@ const packages = [
   },
 ];
 
+function Card({ pkg, variant }) {
+  const baseBorder = pkg.featured ? "border-primary-500/50" : "border-white/10";
+
+  const classMap = {
+    original: `hover-lift rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
+    squishy: `squishy-card rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
+    glow: `glow-glass-card rounded-2xl border p-5 bg-white/[0.03] ${baseBorder}`,
+  };
+
+  return (
+    <article className={classMap[variant]}>
+      <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
+      <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
+      <ul className="space-y-2 text-slate-300 text-sm mb-5">
+        {pkg.points.map((point) => (
+          <li key={point}>• {point}</li>
+        ))}
+      </ul>
+
+      <Link
+        href={pkg.href}
+        className="inline-flex text-sm text-primary-300 hover:text-primary-200 hover:translate-x-1 transition-transform duration-200"
+      >
+        Learn more →
+      </Link>
+    </article>
+  );
+}
+
+function Row({ title, subtitle, variant }) {
+  return (
+    <div className="mb-8">
+      <h3 className="text-white text-lg font-semibold mb-1">{title}</h3>
+      <p className="text-slate-500 text-sm mb-4">{subtitle}</p>
+      <div className="grid md:grid-cols-3 gap-4">
+        {packages.map((pkg) => (
+          <Card key={`${variant}-${pkg.name}`} pkg={pkg} variant={variant} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const ServicePackagesSection = () => {
   return (
     <section id="services" className="py-10">
@@ -45,34 +88,26 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Clear options for businesses that need a modern website and better conversions.
+        Comparison mode: same pricing and content, three card styles.
       </p>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        {packages.map((pkg) => (
-          <article
-            key={pkg.name}
-            className={`hover-lift rounded-2xl border p-5 bg-white/[0.03] ${
-              pkg.featured ? "border-primary-500/50" : "border-white/10"
-            }`}
-          >
-            <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
-            <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
-            <ul className="space-y-2 text-slate-300 text-sm mb-5">
-              {pkg.points.map((point) => (
-                <li key={point}>• {point}</li>
-              ))}
-            </ul>
+      <Row
+        title="Option A — Original"
+        subtitle="Current package card style"
+        variant="original"
+      />
 
-            <Link
-              href={pkg.href}
-              className="inline-flex text-sm text-primary-300 hover:text-primary-200 hover:translate-x-1 transition-transform duration-200"
-            >
-              Learn more →
-            </Link>
-          </article>
-        ))}
-      </div>
+      <Row
+        title="Option B — Squishy Card (inspired by hover.dev)"
+        subtitle="Bouncy interaction with depth"
+        variant="squishy"
+      />
+
+      <Row
+        title="Option C — Glowing Gradient Glassmorphism"
+        subtitle="Inspired by glowing glass card effect"
+        variant="glow"
+      />
     </section>
   );
 };
