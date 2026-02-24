@@ -69,7 +69,7 @@ export const projects = [
     shortDescription: "Booking demo with forms, calendar links, and reminders.",
     description:
       "Built a client-ready booking website demo for salons/clinics with appointment form, time slots, reminders, and calendar integration.",
-    image: "/images/projects/3.png",
+    image: "/images/projects/salon-clinic-booking.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: "https://msn698.github.io/salon-clinic-booking-demo/",
     repoUrl: "https://github.com/msn698/salon-clinic-booking-demo",
