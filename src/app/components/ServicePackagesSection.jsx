@@ -1,9 +1,11 @@
 import React from "react";
+import Link from "next/link";
 
 const packages = [
   {
     name: "Starter",
     price: "From $299",
+    href: "/services/restaurant-website-dubai",
     points: [
       "1-page modern website",
       "Mobile-first responsive design",
@@ -14,6 +16,7 @@ const packages = [
   {
     name: "Growth",
     price: "From $699",
+    href: "/services/website-redesign-dubai",
     featured: true,
     points: [
       "Multi-section/business website",
@@ -25,6 +28,7 @@ const packages = [
   {
     name: "Custom",
     price: "Custom quote",
+    href: "/#contact",
     points: [
       "Advanced integrations",
       "Custom features and automations",
@@ -54,11 +58,18 @@ const ServicePackagesSection = () => {
           >
             <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
             <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
-            <ul className="space-y-2 text-slate-300 text-sm">
+            <ul className="space-y-2 text-slate-300 text-sm mb-5">
               {pkg.points.map((point) => (
                 <li key={point}>• {point}</li>
               ))}
             </ul>
+
+            <Link
+              href={pkg.href}
+              className="inline-flex text-sm text-primary-300 hover:text-primary-200"
+            >
+              Learn more →
+            </Link>
           </article>
         ))}
       </div>

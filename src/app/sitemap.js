@@ -9,6 +9,16 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
+  const serviceUrls = [
+    "/services/restaurant-website-dubai",
+    "/services/website-redesign-dubai",
+  ].map((path) => ({
+    url: `${base}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.9,
+  }));
+
   return [
     {
       url: base,
@@ -16,6 +26,7 @@ export default function sitemap() {
       changeFrequency: "weekly",
       priority: 1,
     },
+    ...serviceUrls,
     ...projectUrls,
   ];
 }
