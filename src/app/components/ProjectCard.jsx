@@ -11,13 +11,13 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePri
 
   return (
     <div>
-      <div className="h-52 md:h-72 rounded-t-xl relative group overflow-hidden border border-white/10 bg-[#151515]">
+      <div className="hover-lift h-52 md:h-72 rounded-t-xl relative group overflow-hidden border border-white/10 bg-[#151515]">
         <Image
           src={imgUrl}
           alt={`${title} preview`}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover object-top"
+          className="hover-zoom object-cover object-top"
         />
         <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
           {gitUrl ? (
@@ -42,7 +42,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePri
           </Link>
         </div>
       </div>
-      <div className="text-white rounded-b-xl mt-3 bg-white/[0.03] border border-white/10 py-6 px-4">
+      <div className="hover-lift text-white rounded-b-xl mt-3 bg-white/[0.03] border border-white/10 py-6 px-4">
         <h5 className="text-xl font-semibold mb-2">{title}</h5>
         <p className="text-[#ADB7BE]">{description}</p>
         {sourcePrivate && (

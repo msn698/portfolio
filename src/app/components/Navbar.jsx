@@ -31,7 +31,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-30">
       <div className="mx-auto mt-3 w-[95%] max-w-6xl rounded-2xl border border-white/10 bg-[#121212]/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
         <div className="flex lg:py-3 flex-wrap items-center justify-between px-4 sm:px-6 py-2.5">
-          <Link href="/" className="inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/20 bg-white/5 text-white font-bold tracking-tight">
+          <Link href="/" className="hover-lift inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/20 bg-white/5 text-white font-bold tracking-tight">
             MS
           </Link>
           <div className="mobile-menu block md:hidden">

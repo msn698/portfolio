@@ -52,7 +52,7 @@ const ServicePackagesSection = () => {
         {packages.map((pkg) => (
           <article
             key={pkg.name}
-            className={`rounded-2xl border p-5 bg-white/[0.03] ${
+            className={`hover-lift rounded-2xl border p-5 bg-white/[0.03] ${
               pkg.featured ? "border-primary-500/50" : "border-white/10"
             }`}
           >
@@ -66,7 +66,7 @@ const ServicePackagesSection = () => {
 
             <Link
               href={pkg.href}
-              className="inline-flex text-sm text-primary-300 hover:text-primary-200"
+              className="inline-flex text-sm text-primary-300 hover:text-primary-200 hover:translate-x-1 transition-transform duration-200"
             >
               Learn more →
             </Link>

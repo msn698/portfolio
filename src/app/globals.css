@@ -44,3 +44,20 @@ body {
   opacity: 0.6;
 }
 
+.hover-lift {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+.hover-zoom {
+  transition: transform 320ms ease;
+}
+
+.group:hover .hover-zoom {
+  transform: scale(1.04);
+}
+

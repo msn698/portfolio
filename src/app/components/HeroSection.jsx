@@ -61,7 +61,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium shadow-lg shadow-primary-900/25 hover:opacity-95 transition-opacity"
+              className="hover-lift inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium shadow-lg shadow-primary-900/25 hover:opacity-95 transition-opacity"
               aria-label="Contact me"
             >
               Start a Project
@@ -71,7 +71,7 @@ const HeroSection = () => {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#25D366]/60 bg-[#25D366]/10 text-[#C8FAD9] font-medium hover:bg-[#25D366]/20 transition-colors"
+                className="hover-lift inline-flex items-center justify-center px-6 py-3 rounded-xl border border-[#25D366]/60 bg-[#25D366]/10 text-[#C8FAD9] font-medium hover:bg-[#25D366]/20 transition-colors"
                 aria-label="Chat on WhatsApp"
               >
                 WhatsApp Me
@@ -80,7 +80,7 @@ const HeroSection = () => {
             <a
               href="/Mohammed_Saeed_CV.pdf"
               download="Mohammed_Saeed_CV.pdf"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-medium hover:bg-white/10 transition-colors"
+              className="hover-lift inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/15 bg-white/5 text-white font-medium hover:bg-white/10 transition-colors"
               aria-label="Download CV"
             >
               Download CV
