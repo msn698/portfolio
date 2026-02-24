@@ -1,0 +1,69 @@
+import React from "react";
+
+const packages = [
+  {
+    name: "Starter",
+    price: "From $299",
+    points: [
+      "1-page modern website",
+      "Mobile-first responsive design",
+      "WhatsApp + contact form integration",
+      "Basic on-page SEO setup",
+    ],
+  },
+  {
+    name: "Growth",
+    price: "From $699",
+    featured: true,
+    points: [
+      "Multi-section/business website",
+      "Conversion-focused UX + copy structure",
+      "Speed/performance optimization",
+      "Analytics + lead tracking setup",
+    ],
+  },
+  {
+    name: "Custom",
+    price: "Custom quote",
+    points: [
+      "Advanced integrations",
+      "Custom features and automations",
+      "Ongoing iteration support",
+      "Priority communication",
+    ],
+  },
+];
+
+const ServicePackagesSection = () => {
+  return (
+    <section id="services" className="py-10">
+      <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-3">
+        Service Packages
+      </h2>
+      <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
+        Clear options for businesses that need a modern website and better conversions.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-4">
+        {packages.map((pkg) => (
+          <article
+            key={pkg.name}
+            className={`rounded-2xl border p-5 bg-white/[0.03] ${
+              pkg.featured ? "border-primary-500/50" : "border-white/10"
+            }`}
+          >
+            <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
+            <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
+            <ul className="space-y-2 text-slate-300 text-sm">
+              {pkg.points.map((point) => (
+                <li key={point}>• {point}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default ServicePackagesSection;

@@ -7,6 +7,9 @@ import Footer from "./components/Footer";
 import AchievementsSection from "./components/AchievementsSection";
 import TrustStrip from "./components/TrustStrip";
 import TestimonialsSection from "./components/TestimonialsSection";
+import ServicePackagesSection from "./components/ServicePackagesSection";
+import FAQSection from "./components/FAQSection";
+import StickyWhatsAppCTA from "./components/StickyWhatsAppCTA";
 
 export default function Home() {
   return (
@@ -18,10 +21,13 @@ export default function Home() {
         <AchievementsSection />
         <AboutSection />
         <ProjectsSection />
+        <ServicePackagesSection />
         <TestimonialsSection />
+        <FAQSection />
         <EmailSection />
       </div>
       <Footer />
+      <StickyWhatsAppCTA />
     </main>
   );
 }

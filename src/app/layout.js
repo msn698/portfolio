@@ -3,13 +3,15 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+const baseUrl = 'https://msaeed.tech';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Mohammed Saeed | Web Developer Portfolio',
   description: 'Modern web developer portfolio showcasing selected projects, case studies, and contact options.',
   keywords: 'Mohammed Saeed, web developer portfolio, Next.js, React, frontend developer Dubai, msaeed.tech',
-  metadataBase: new URL('https://msaeed.tech'),
+  metadataBase: new URL(baseUrl),
   applicationName: 'Mohammed Saeed Portfolio',
   alternates: {
     canonical: '/',
@@ -25,7 +27,7 @@ export const metadata = {
   openGraph: {
     title: 'Mohammed Saeed | Web Developer Portfolio',
     description: 'Explore selected projects and case studies by Mohammed Saeed.',
-    url: 'https://msaeed.tech',
+    url: baseUrl,
     siteName: 'Mohammed Saeed Portfolio',
     images: [
       {
@@ -66,11 +68,15 @@ export default function RootLayout({ children }) {
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Mohammed Saeed',
-              url: 'https://msaeed.tech',
+              url: baseUrl,
               jobTitle: 'Web Developer',
+              sameAs: [
+                'https://github.com/msn698',
+                'https://www.linkedin.com/in/mohammed-saeed-nassar'
+              ],
               worksFor: {
                 '@type': 'Organization',
-                name: 'Personal Portfolio',
+                name: 'Independent',
               },
             }),
           }}

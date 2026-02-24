@@ -7,6 +7,35 @@ export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
+export function generateMetadata({ params }) {
+  const project = getProjectBySlug(params.slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Mohammed Saeed",
+    };
+  }
+
+  return {
+    title: `${project.title} Case Study | Mohammed Saeed`,
+    description: project.description,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} Case Study | Mohammed Saeed`,
+      description: project.description,
+      url: `https://msaeed.tech/projects/${project.slug}`,
+      images: [
+        {
+          url: project.image,
+          alt: `${project.title} preview`,
+        },
+      ],
+    },
+  };
+}
+
 export default function ProjectCaseStudyPage({ params }) {
   const project = getProjectBySlug(params.slug);
 
