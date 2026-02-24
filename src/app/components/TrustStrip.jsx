@@ -6,7 +6,6 @@ const trustItems = [
   "Python",
   "MongoDB",
   "AWS/Azure",
-  "Dubai, UAE",
 ];
 
 const TrustStrip = () => {
