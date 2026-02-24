@@ -37,17 +37,47 @@ const packages = [
   },
 ];
 
-const theme = {
-  name: "Purple Surge",
-  gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 42%, #4c1d95 75%, #1e1b4b 100%)",
-  border: "rgba(233, 213, 255, 0.28)",
-  circle: "#2b1a56",
-  ellipse: "#20143f",
-};
+const themes = [
+  {
+    name: "Theme 1 — Indigo Pop (original)",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #0f172a 100%)",
+    border: "rgba(255,255,255,0.16)",
+    circle: "#111827",
+    ellipse: "#0b1220",
+  },
+  {
+    name: "Theme 2 — Purple Surge",
+    gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 42%, #4c1d95 75%, #1e1b4b 100%)",
+    border: "rgba(233, 213, 255, 0.28)",
+    circle: "#2b1a56",
+    ellipse: "#20143f",
+  },
+  {
+    name: "Theme 3 — Sunset Neon",
+    gradient: "linear-gradient(135deg, #ff6a3d 0%, #f43f5e 45%, #1f1147 100%)",
+    border: "rgba(255,184,163,0.36)",
+    circle: "#2a1024",
+    ellipse: "#1f0e1c",
+  },
+  {
+    name: "Theme 4 — Electric Ocean",
+    gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 45%, #172554 100%)",
+    border: "rgba(147,234,255,0.3)",
+    circle: "#0f1f37",
+    ellipse: "#0a1931",
+  },
+  {
+    name: "Theme 5 — Aurora Emerald",
+    gradient: "linear-gradient(135deg, #22c55e 0%, #14b8a6 45%, #11332b 100%)",
+    border: "rgba(167,243,208,0.28)",
+    circle: "#122f2b",
+    ellipse: "#0c241f",
+  },
+];
 
 const cardVariants = { hover: { scale: 1.05 } };
 
-const SquishyCard = ({ pkg }) => (
+const SquishyCard = ({ pkg, theme }) => (
   <motion.article
     whileHover="hover"
     transition={{ duration: 1, ease: "backInOut" }}
@@ -84,11 +114,11 @@ const SquishyCard = ({ pkg }) => (
       Learn More
     </Link>
 
-    <Background />
+    <Background theme={theme} />
   </motion.article>
 );
 
-const Background = () => (
+const Background = ({ theme }) => (
   <motion.svg
     width="320"
     height="420"
@@ -126,14 +156,19 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Final style: Squishy card in a stronger purple theme.
+        Squishy card only — compare color options.
       </p>
 
-      <div className="grid md:grid-cols-3 gap-4 mt-4">
-        {packages.map((pkg) => (
-          <SquishyCard key={pkg.name} pkg={pkg} />
-        ))}
-      </div>
+      {themes.map((theme) => (
+        <div key={theme.name} className="mb-10">
+          <h3 className="text-white text-lg font-semibold mb-1">{theme.name}</h3>
+          <div className="grid md:grid-cols-3 gap-4 mt-4">
+            {packages.map((pkg) => (
+              <SquishyCard key={`${theme.name}-${pkg.name}`} pkg={pkg} theme={theme} />
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 };
