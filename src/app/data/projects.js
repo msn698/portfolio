@@ -41,6 +41,27 @@ export const projects = [
     result:
       "Cleaner positioning, better first impression, and stronger client-facing credibility.",
   },
+  {
+    id: 3,
+    slug: "restaurant-ordering-landing",
+    title: "Restaurant Ordering Landing Page",
+    shortDescription: "Landing page with prefilled WhatsApp ordering flow.",
+    description:
+      "Built a mobile-friendly restaurant landing page designed to convert visitors into WhatsApp orders in minimal steps.",
+    image: "/images/projects/2.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://msn698.github.io/restaurant-ordering-landing/",
+    repoUrl: "https://github.com/msn698/restaurant-ordering-landing",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    problem:
+      "Restaurants often lose orders because users face too many steps before placing an order.",
+    solution:
+      "Created a one-page experience with menu highlights and a one-tap WhatsApp CTA containing a prefilled order message.",
+    result:
+      "Faster ordering path and a cleaner conversion funnel from visit to chat.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
