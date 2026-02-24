@@ -48,7 +48,7 @@ export const projects = [
     shortDescription: "Landing page with prefilled WhatsApp ordering flow.",
     description:
       "Built a mobile-friendly restaurant landing page designed to convert visitors into WhatsApp orders in minimal steps.",
-    image: "/images/projects/2.png",
+    image: "/images/projects/restaurant-ordering-landing.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: "https://msn698.github.io/restaurant-ordering-landing/",
     repoUrl: "https://github.com/msn698/restaurant-ordering-landing",
@@ -61,6 +61,27 @@ export const projects = [
       "Created a one-page experience with menu highlights and a one-tap WhatsApp CTA containing a prefilled order message.",
     result:
       "Faster ordering path and a cleaner conversion funnel from visit to chat.",
+  },
+  {
+    id: 4,
+    slug: "salon-clinic-booking-demo",
+    title: "Salon/Clinic Booking Website",
+    shortDescription: "Booking demo with forms, calendar links, and reminders.",
+    description:
+      "Built a client-ready booking website demo for salons/clinics with appointment form, time slots, reminders, and calendar integration.",
+    image: "/images/projects/3.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://msn698.github.io/salon-clinic-booking-demo/",
+    repoUrl: "https://github.com/msn698/salon-clinic-booking-demo",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript", "LocalStorage", "GitHub Pages"],
+    problem:
+      "Small service businesses need simple online booking and reminder flows without complex systems.",
+    solution:
+      "Created a fast booking interface with saved appointments, Google Calendar links, and WhatsApp reminders.",
+    result:
+      "Improves booking speed and follow-up reliability in a lightweight deploy-anywhere format.",
   },
 ];
 
