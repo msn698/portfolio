@@ -37,32 +37,49 @@ const packages = [
   },
 ];
 
+const themes = [
+  {
+    name: "Theme 1 — Indigo Pop",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 45%, #0f172a 100%)",
+    border: "rgba(255,255,255,0.16)",
+    circle: "#111827",
+    ellipse: "#0b1220",
+  },
+  {
+    name: "Theme 2 — Sunset Neon",
+    gradient: "linear-gradient(135deg, #ff6a3d 0%, #f43f5e 45%, #1f1147 100%)",
+    border: "rgba(255,184,163,0.36)",
+    circle: "#2a1024",
+    ellipse: "#1f0e1c",
+  },
+  {
+    name: "Theme 3 — Electric Ocean",
+    gradient: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 45%, #172554 100%)",
+    border: "rgba(147,234,255,0.3)",
+    circle: "#0f1f37",
+    ellipse: "#0a1931",
+  },
+  {
+    name: "Theme 4 — Aurora Emerald",
+    gradient: "linear-gradient(135deg, #22c55e 0%, #14b8a6 45%, #11332b 100%)",
+    border: "rgba(167,243,208,0.28)",
+    circle: "#122f2b",
+    ellipse: "#0c241f",
+  },
+];
+
 const cardVariants = { hover: { scale: 1.05 } };
 
-const OriginalCard = ({ pkg }) => (
-  <article className="hover-lift rounded-2xl border border-white/10 p-5 bg-white/[0.03]">
-    <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
-    <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
-    <ul className="space-y-2 text-slate-300 text-sm mb-5">
-      {pkg.points.map((point) => (
-        <li key={point}>• {point}</li>
-      ))}
-    </ul>
-    <Link
-      href={pkg.href}
-      className="inline-flex text-sm text-primary-300 hover:text-primary-200 hover:translate-x-1 transition-transform duration-200"
-    >
-      Learn more →
-    </Link>
-  </article>
-);
-
-const SquishyCard = ({ pkg }) => (
+const SquishyCard = ({ pkg, theme }) => (
   <motion.article
     whileHover="hover"
     transition={{ duration: 1, ease: "backInOut" }}
     variants={cardVariants}
-    className="relative h-[420px] w-full shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-[#7c3aed] via-[#4f46e5] to-[#0f172a] p-6 border border-white/15"
+    className="relative h-[420px] w-full shrink-0 overflow-hidden rounded-xl p-6"
+    style={{
+      background: theme.gradient,
+      border: `1px solid ${theme.border}`,
+    }}
   >
     <div className="relative z-10 text-white">
       <span className="mb-3 block w-fit rounded-full bg-white/30 px-3 py-0.5 text-sm font-light text-white">
@@ -82,17 +99,19 @@ const SquishyCard = ({ pkg }) => (
         ))}
       </ul>
     </div>
+
     <Link
       href={pkg.href}
       className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white"
     >
       Learn More
     </Link>
-    <Background />
+
+    <Background theme={theme} />
   </motion.article>
 );
 
-const Background = () => (
+const Background = ({ theme }) => (
   <motion.svg
     width="320"
     height="420"
@@ -109,7 +128,7 @@ const Background = () => (
       cx="160.5"
       cy="124.5"
       r="101.5"
-      fill="#111827"
+      fill={theme.circle}
     />
     <motion.ellipse
       variants={{ hover: { scaleY: 2.25, y: -25 } }}
@@ -118,25 +137,9 @@ const Background = () => (
       cy="300.5"
       rx="101.5"
       ry="43.5"
-      fill="#0b1220"
+      fill={theme.ellipse}
     />
   </motion.svg>
-);
-
-const GlowCard = ({ pkg, index }) => (
-  <article className={`gg-box gg-${index + 1}`}>
-    <span />
-    <div className="gg-content">
-      <h3>{pkg.name}</h3>
-      <p className="gg-price">{pkg.price}</p>
-      <ul>
-        {pkg.points.map((point) => (
-          <li key={point}>• {point}</li>
-        ))}
-      </ul>
-      <Link href={pkg.href}>Learn More</Link>
-    </div>
-  </article>
 );
 
 const ServicePackagesSection = () => {
@@ -146,38 +149,19 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Option A + Option B + Option C using the same data.
+        Option B only — pick your preferred color theme.
       </p>
 
-      <div className="mb-10">
-        <h3 className="text-white text-lg font-semibold mb-1">Option A — Original</h3>
-        <p className="text-slate-500 text-sm mb-4">Current baseline style.</p>
-        <div className="grid md:grid-cols-3 gap-4">
-          {packages.map((pkg) => (
-            <OriginalCard key={`og-${pkg.name}`} pkg={pkg} />
-          ))}
+      {themes.map((theme) => (
+        <div key={theme.name} className="mb-10">
+          <h3 className="text-white text-lg font-semibold mb-1">{theme.name}</h3>
+          <div className="grid md:grid-cols-3 gap-4 mt-4">
+            {packages.map((pkg) => (
+              <SquishyCard key={`${theme.name}-${pkg.name}`} pkg={pkg} theme={theme} />
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className="mb-10">
-        <h3 className="text-white text-lg font-semibold mb-1">Option B — Squishy Card</h3>
-        <p className="text-slate-500 text-sm mb-4">Closer to the hover.dev squishy interaction style.</p>
-        <div className="grid md:grid-cols-3 gap-4">
-          {packages.map((pkg) => (
-            <SquishyCard key={`sq-${pkg.name}`} pkg={pkg} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-white text-lg font-semibold mb-1">Option C — Glowing Gradient Glassmorphism</h3>
-        <p className="text-slate-500 text-sm mb-4">Implemented from your provided source structure.</p>
-        <div className="gg-container">
-          {packages.map((pkg, i) => (
-            <GlowCard key={`gl-${pkg.name}`} pkg={pkg} index={i} />
-          ))}
-        </div>
-      </div>
+      ))}
     </section>
   );
 };
