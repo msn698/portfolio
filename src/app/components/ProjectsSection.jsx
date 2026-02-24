@@ -1,40 +1,21 @@
 "use client";
 import React, { useState, useRef } from "react";
+import Link from "next/link";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
+import { projects } from "../data/projects";
 
-const projectsData = [
-  {
-    id: 1,
-    title: "VouchPro",
-    description: "A Discord bot for vouching and scammer alerts",
-    image: "/images/projects/vouchpro.png",
-    tag: ["All", "Web", "Python"],
-    gitUrl: "https://bcm-1a15fad8a9db.herokuapp.com/",
-    previewUrl: "https://bcm-1a15fad8a9db.herokuapp.com/",
-  },
-  {
-    id: 2,
-    title: "Portfolio Website",
-    description: "The website you are currently viewing",
-    image: "/images/projects/1.png",
-    tag: ["All", "Web", "JavaScript"],
-    gitUrl: "https://github.com/msn698/portfolio",
-    previewUrl: "/",
-  },
-  /* 
-  {
-    id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  */
-];
+const projectsData = projects.map((project) => ({
+  id: project.id,
+  slug: project.slug,
+  title: project.title,
+  description: project.shortDescription,
+  image: project.image,
+  tag: ["All", ...project.tags],
+  gitUrl: project.repoUrl,
+  previewUrl: project.liveUrl,
+}));
 
 const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
@@ -101,6 +82,12 @@ const ProjectsSection = () => {
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
             />
+            <Link
+              href={`/projects/${project.slug}`}
+              className="inline-block mt-3 text-sm text-primary-400 hover:text-primary-300"
+            >
+              View case study →
+            </Link>
           </motion.li>
         ))}
       </ul>
