@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
 import TabButton from "./TabButton";
 
 const TAB_DATA = [
@@ -51,54 +50,55 @@ const AboutSection = () => {
 
   return (
     <section className="text-white py-10" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center">
-        <div className="section-glow rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-          <div className="rounded-xl bg-[#171717] border border-white/10 p-4">
-            <Image
-              src="/images/about-image.png"
-              width={500}
-              height={500}
-              alt="About Mohammed Saeed"
-              className="rounded-xl w-full h-auto object-cover"
-            />
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-7">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+        <p className="text-base lg:text-lg text-slate-300 leading-relaxed">
+          I build modern, conversion-focused websites for startups and businesses.
+          My focus is clean UI, fast performance, and practical outcomes — so your
+          website does more than just look good.
+        </p>
+        <p className="text-base lg:text-lg text-slate-300 leading-relaxed mt-3">
+          I care about shipping work that is reliable, measurable, and aligned with
+          business goals, from first impression to lead capture.
+        </p>
+
+        <div className="grid sm:grid-cols-3 gap-3 mt-6">
+          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+            <p className="text-sm text-slate-400">Focus</p>
+            <p className="text-white font-medium">High-converting business websites</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+            <p className="text-sm text-slate-400">Approach</p>
+            <p className="text-white font-medium">Speed, clarity, and measurable UX</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+            <p className="text-sm text-slate-400">Best fit</p>
+            <p className="text-white font-medium">Startups and local businesses</p>
           </div>
         </div>
 
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg text-slate-300 leading-relaxed">
-            I build modern, conversion-focused websites for startups and businesses.
-            My focus is clean UI, fast performance, and practical outcomes — so your
-            website does more than just look good.
-          </p>
-          <p className="text-base lg:text-lg text-slate-300 leading-relaxed mt-3">
-            I care about shipping work that is reliable, measurable, and aligned with
-            business goals, from first impression to lead capture.
-          </p>
-
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange("skills")}
-              active={tab === "skills"}
-            >
-              Skills
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              Education
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
-            >
-              Certifications
-            </TabButton>
-          </div>
-          <div className="mt-6 text-slate-300">
-            {TAB_DATA.find((t) => t.id === tab).content}
-          </div>
+        <div className="flex flex-row justify-start mt-8">
+          <TabButton
+            selectTab={() => handleTabChange("skills")}
+            active={tab === "skills"}
+          >
+            Skills
+          </TabButton>
+          <TabButton
+            selectTab={() => handleTabChange("education")}
+            active={tab === "education"}
+          >
+            Education
+          </TabButton>
+          <TabButton
+            selectTab={() => handleTabChange("certifications")}
+            active={tab === "certifications"}
+          >
+            Certifications
+          </TabButton>
+        </div>
+        <div className="mt-6 text-slate-300">
+          {TAB_DATA.find((t) => t.id === tab).content}
         </div>
       </div>
     </section>
