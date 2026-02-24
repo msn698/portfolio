@@ -59,9 +59,15 @@ export default function ProjectCaseStudyPage({ params }) {
         <Link href={project.liveUrl} className="px-4 py-2 rounded-lg bg-primary-500 text-white" target={project.liveUrl.startsWith("http") ? "_blank" : undefined} rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}>
           Live Demo
         </Link>
-        <Link href={project.repoUrl} className="px-4 py-2 rounded-lg border border-white/20 text-white" target={project.repoUrl.startsWith("http") ? "_blank" : undefined} rel={project.repoUrl.startsWith("http") ? "noopener noreferrer" : undefined}>
-          Source
-        </Link>
+        {project.repoUrl ? (
+          <Link href={project.repoUrl} className="px-4 py-2 rounded-lg border border-white/20 text-white" target={project.repoUrl.startsWith("http") ? "_blank" : undefined} rel={project.repoUrl.startsWith("http") ? "noopener noreferrer" : undefined}>
+            Source
+          </Link>
+        ) : (
+          <span className="px-4 py-2 rounded-lg border border-amber-500/40 text-amber-300 text-sm">
+            Source code is private
+          </span>
+        )}
       </div>
     </main>
   );

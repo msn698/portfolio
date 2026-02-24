@@ -15,6 +15,7 @@ const projectsData = projects.map((project) => ({
   tag: ["All", ...project.tags],
   gitUrl: project.repoUrl,
   previewUrl: project.liveUrl,
+  sourcePrivate: project.sourcePrivate,
 }));
 
 const ProjectsSection = () => {
@@ -81,6 +82,7 @@ const ProjectsSection = () => {
               imgUrl={project.image}
               gitUrl={project.gitUrl}
               previewUrl={project.previewUrl}
+              sourcePrivate={project.sourcePrivate}
             />
             <Link
               href={`/projects/${project.slug}`}

@@ -6,25 +6,43 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Mohammed Saeed | Personal Portfolio & Web Developer',
-  description: 'The personal portfolio of Mohammed Saeed showcasing projects, skills, and web development expertise.',
-  keywords: 'personal portfolio, web developer, Mohammed Saeed, msaeed.tech, frontend development, software engineer',
+  title: 'Mohammed Saeed | Web Developer Portfolio',
+  description: 'Modern web developer portfolio showcasing selected projects, case studies, and contact options.',
+  keywords: 'Mohammed Saeed, web developer portfolio, Next.js, React, frontend developer Dubai, msaeed.tech',
   metadataBase: new URL('https://msaeed.tech'),
+  applicationName: 'Mohammed Saeed Portfolio',
   alternates: {
     canonical: '/',
   },
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [{ url: '/icon.png', type: 'image/png' }],
+  },
   openGraph: {
-    title: 'Mohammed Saeed | Personal Portfolio & Web Developer',
-    description: 'Explore the projects and skills of Mohammed Saeed on his personal portfolio at msaeed.tech.',
+    title: 'Mohammed Saeed | Web Developer Portfolio',
+    description: 'Explore selected projects and case studies by Mohammed Saeed.',
     url: 'https://msaeed.tech',
     siteName: 'Mohammed Saeed Portfolio',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Mohammed Saeed Portfolio Preview',
+      },
+    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mohammed Saeed | Personal Portfolio & Web Developer',
-    description: 'Explore the projects and skills of Mohammed Saeed on his personal portfolio at msaeed.tech.',
+    title: 'Mohammed Saeed | Web Developer Portfolio',
+    description: 'Explore selected projects and case studies by Mohammed Saeed.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,

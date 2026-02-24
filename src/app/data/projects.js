@@ -9,7 +9,8 @@ export const projects = [
     image: "/images/projects/vouchpro.png",
     tags: ["Web", "Python"],
     liveUrl: "https://bcm-1a15fad8a9db.herokuapp.com/",
-    repoUrl: "https://bcm-1a15fad8a9db.herokuapp.com/",
+    repoUrl: null,
+    sourcePrivate: true,
     role: "Developer",
     stack: ["Python", "Discord APIs", "Automation"],
     problem:
@@ -30,6 +31,7 @@ export const projects = [
     tags: ["Web", "JavaScript"],
     liveUrl: "/",
     repoUrl: "https://github.com/msn698/portfolio",
+    sourcePrivate: false,
     role: "Designer + Developer",
     stack: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     problem:
