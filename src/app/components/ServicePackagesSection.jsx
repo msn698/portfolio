@@ -39,6 +39,24 @@ const packages = [
 
 const cardVariants = { hover: { scale: 1.05 } };
 
+const OriginalCard = ({ pkg }) => (
+  <article className="hover-lift rounded-2xl border border-white/10 p-5 bg-white/[0.03]">
+    <h3 className="text-xl font-semibold text-white">{pkg.name}</h3>
+    <p className="text-primary-300 mt-1 mb-4">{pkg.price}</p>
+    <ul className="space-y-2 text-slate-300 text-sm mb-5">
+      {pkg.points.map((point) => (
+        <li key={point}>• {point}</li>
+      ))}
+    </ul>
+    <Link
+      href={pkg.href}
+      className="inline-flex text-sm text-primary-300 hover:text-primary-200 hover:translate-x-1 transition-transform duration-200"
+    >
+      Learn more →
+    </Link>
+  </article>
+);
+
 const SquishyCard = ({ pkg }) => (
   <motion.article
     whileHover="hover"
@@ -128,8 +146,18 @@ const ServicePackagesSection = () => {
         Service Packages
       </h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
-        Option B (Squishy) + Option C (Glowing Glass) using the same data.
+        Option A + Option B + Option C using the same data.
       </p>
+
+      <div className="mb-10">
+        <h3 className="text-white text-lg font-semibold mb-1">Option A — Original</h3>
+        <p className="text-slate-500 text-sm mb-4">Current baseline style.</p>
+        <div className="grid md:grid-cols-3 gap-4">
+          {packages.map((pkg) => (
+            <OriginalCard key={`og-${pkg.name}`} pkg={pkg} />
+          ))}
+        </div>
+      </div>
 
       <div className="mb-10">
         <h3 className="text-white text-lg font-semibold mb-1">Option B — Squishy Card</h3>
