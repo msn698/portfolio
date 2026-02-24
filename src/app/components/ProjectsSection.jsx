@@ -39,7 +39,7 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-10">
       <h2 className="text-center text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
-        Selected Projects
+        Projects
       </h2>
       <p className="text-center text-slate-400 max-w-2xl mx-auto mb-6">
         A mix of product builds and practical tools focused on performance and usability.
