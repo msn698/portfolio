@@ -11,6 +11,7 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import ServicePackagesSection from "./components/ServicePackagesSection";
 import FAQSection from "./components/FAQSection";
 import StickyWhatsAppCTA from "./components/StickyWhatsAppCTA";
+import CursorSpotlight from "./components/CursorSpotlight";
 
 const baseUrl = "https://msaeed.tech";
 
@@ -44,6 +45,7 @@ const faqSchemaItems = [
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
+      <CursorSpotlight />
       <Script
         id="home-seo-schema"
         type="application/ld+json"
