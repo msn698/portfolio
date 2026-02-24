@@ -55,11 +55,11 @@ const AboutSection = () => {
         <div className="section-glow rounded-2xl border border-white/10 bg-white/[0.03] p-4">
           <div className="rounded-xl bg-[#171717] border border-white/10 p-4">
             <Image
-              src="/images/hero-image.png"
+              src="/images/about-image.png"
               width={500}
               height={500}
-              alt="Mohammed Saeed avatar"
-              className="rounded-xl w-full h-auto object-contain"
+              alt="About Mohammed Saeed"
+              className="rounded-xl w-full h-auto object-cover"
             />
           </div>
         </div>

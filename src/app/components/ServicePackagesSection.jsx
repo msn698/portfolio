@@ -4,7 +4,7 @@ import Link from "next/link";
 const packages = [
   {
     name: "Starter",
-    price: "From AED 1,099",
+    price: "From AED 299",
     href: "/services/starter",
     points: [
       "1-page modern website",
@@ -15,7 +15,7 @@ const packages = [
   },
   {
     name: "Growth",
-    price: "From AED 2,599",
+    price: "From AED 699",
     href: "/services/growth",
     featured: true,
     points: [
