@@ -26,7 +26,7 @@ export const projects = [
     shortDescription: "Modern portfolio website focused on conversion.",
     description:
       "Designed and shipped a responsive personal portfolio with improved UX, contact flow, and performance-focused frontend patterns.",
-    image: "/images/projects/1.png",
+    image: "/images/projects/portfolio-website.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: "/",
     repoUrl: "https://github.com/msn698/portfolio",
