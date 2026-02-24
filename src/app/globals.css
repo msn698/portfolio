@@ -66,23 +66,67 @@ body {
   transform: scale(1.04);
 }
 
-.cursor-spotlight {
+.cursor-ring,
+.cursor-dot {
   position: fixed;
-  left: 50%;
-  top: 50%;
-  width: 240px;
-  height: 240px;
-  border-radius: 999px;
+  left: 0;
+  top: 0;
   pointer-events: none;
-  z-index: 0;
   opacity: 0;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(94, 169, 255, 0.16) 0%, rgba(94, 169, 255, 0.08) 36%, rgba(94, 169, 255, 0) 72%);
-  filter: blur(4px);
+  z-index: 60;
+}
+
+.cursor-ring {
+  width: 26px;
+  height: 26px;
+  margin-left: -13px;
+  margin-top: -13px;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 169, 255, 0.75);
+  box-shadow: 0 0 18px rgba(94, 169, 255, 0.28);
+  transition: width 160ms ease, height 160ms ease, margin 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.cursor-ring.hover {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+  margin-top: -18px;
+  border-color: rgba(255, 106, 61, 0.9);
+  background: rgba(255, 106, 61, 0.08);
+}
+
+.cursor-ring.active {
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  margin-top: -3.5px;
+  border-radius: 999px;
+  background: #ff6a3d;
+}
+
+@media (min-width: 1024px) and (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label {
+    cursor: none !important;
+  }
 }
 
 @media (max-width: 1023px), (pointer: coarse) {
-  .cursor-spotlight {
+  .cursor-ring,
+  .cursor-dot {
     display: none;
   }
 }
