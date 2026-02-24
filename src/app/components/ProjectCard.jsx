@@ -17,7 +17,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePri
           alt={`${title} preview`}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-contain p-2"
+          className="object-cover object-top"
         />
         <div className="overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500 ">
           {gitUrl ? (

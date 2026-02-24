@@ -28,7 +28,7 @@ export default function ProjectCaseStudyPage({ params }) {
             alt={project.title}
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-contain p-3"
+            className="object-contain"
           />
         </div>
       </div>
