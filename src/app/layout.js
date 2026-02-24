@@ -1,11 +1,16 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import Script from 'next/script'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const baseUrl = 'https://msaeed.tech';
 
 const inter = Inter({ subsets: ['latin'] })
+const transcity = localFont({
+  src: './fonts/transcity-demo.otf',
+  variable: '--font-display',
+})
 
 export const metadata = {
   title: 'Mohammed Saeed | Web Developer Portfolio',
@@ -82,7 +87,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${transcity.variable}`}>
         {children}
         <SpeedInsights />
       </body>
