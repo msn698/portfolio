@@ -24,10 +24,10 @@ export const metadata = {
   manifest: '/site.webmanifest',
   icons: {
     icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.png', type: 'image/png' },
-      { url: '/icon.png', type: 'image/png' },
     ],
-    apple: [{ url: '/icon.png', type: 'image/png' }],
+    apple: [{ url: '/favicon.png', type: 'image/png' }],
   },
   openGraph: {
     title: 'Mohammed Saeed | Web Developer Portfolio',

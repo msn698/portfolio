@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import CursorSpotlight from "../../components/CursorSpotlight";
 
 export default function ServicePageShell({ title, subtitle, children, ctaLabel = "Get a quote" }) {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212] text-white">
+      <CursorSpotlight />
       <Navbar />
       <section className="mx-auto w-full max-w-4xl mt-28 px-4 sm:px-6 lg:px-8 pb-16">
         <Link href="/#services" className="text-sm text-slate-400 hover:text-white">
