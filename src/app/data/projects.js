@@ -90,7 +90,7 @@ export const projects = [
     shortDescription: "Bold ticketing demo with animated ticker and checkout flow.",
     description:
       "Designed and developed a high-energy ticket page demo with dual-direction marquee strips, live counters, ticket selection, and redirect-ready contact form flow.",
-    image: "/images/projects/pop-art-ticket-demo.svg",
+    image: "/images/projects/pop-art-ticket-demo.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: "https://msn698.github.io/pop-art-ticket-demo/",
     repoUrl: "https://github.com/msn698/pop-art-ticket-demo",
