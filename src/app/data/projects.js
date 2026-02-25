@@ -83,6 +83,27 @@ export const projects = [
     result:
       "Improves booking speed and follow-up reliability in a lightweight deploy-anywhere format.",
   },
+  {
+    id: 5,
+    slug: "pop-art-ticket-demo",
+    title: "Pop Art Exhibition Ticket Demo",
+    shortDescription: "Bold ticketing demo with animated ticker and checkout flow.",
+    description:
+      "Designed and developed a high-energy ticket page demo with dual-direction marquee strips, live counters, ticket selection, and redirect-ready contact form flow.",
+    image: "/images/projects/pop-art-ticket-demo.svg",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://msn698.github.io/pop-art-ticket-demo/",
+    repoUrl: "https://github.com/msn698/pop-art-ticket-demo",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    problem:
+      "Event landing pages often look static and fail to create urgency around ticket conversions.",
+    solution:
+      "Implemented high-contrast visuals, kinetic UI elements, and a fast order summary + WhatsApp checkout interaction.",
+    result:
+      "Stronger perceived event energy and a clearer conversion path from browse to booking intent.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
