@@ -104,6 +104,27 @@ export const projects = [
     result:
       "Stronger perceived event energy and a clearer conversion path from browse to booking intent.",
   },
+  {
+    id: 6,
+    slug: "web3-wild-landing",
+    title: "Web3 Wild Landing (EOS)",
+    shortDescription: "Cinematic Web3 landing page with premium motion and legal-ready pages.",
+    description:
+      "Designed and shipped a production-ready Web3 landing experience featuring cinematic hero video, glassmorphism UI, responsive mobile navigation, scroll reveals, and GitHub Pages deployment.",
+    image: "/images/projects/6.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://msn698.github.io/web3-wild-landing/",
+    repoUrl: "https://github.com/msn698/web3-wild-landing",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    problem:
+      "Needed a high-end, conversion-focused Web3 website that feels premium on both desktop and mobile.",
+    solution:
+      "Built a visual-first one-page architecture with polished micro-interactions, mobile menu drawer, and core production pages (privacy, terms, 404, SEO metadata).",
+    result:
+      "Launch-ready brand presentation with stronger credibility and better cross-device experience.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
