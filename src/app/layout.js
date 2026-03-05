@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import Script from 'next/script'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const baseUrl = 'https://msaeed.tech';
 
@@ -90,6 +91,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} ${transcity.variable}`}>
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   )
