@@ -125,6 +125,27 @@ export const projects = [
     result:
       "Launch-ready brand presentation with stronger credibility and better cross-device experience.",
   },
+  {
+    id: 7,
+    slug: "yasir-vehicle-recovery-service-dubai",
+    title: "Yasir Vehicle Recovery Service Dubai",
+    shortDescription: "Service business website for emergency vehicle recovery in Dubai.",
+    description:
+      "Built a conversion-focused service website for a Dubai vehicle recovery business, with clear service sections, trust-oriented layout, and fast contact intent flow.",
+    image: "/images/projects/5.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: null,
+    repoUrl: "https://github.com/msn698/Yasir-Vehicle-Recovery-Service-Dubai",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript"],
+    problem:
+      "Local emergency service brands often lose leads due to unclear messaging and weak mobile-first contact UX.",
+    solution:
+      "Implemented a clean, trust-first website structure with direct service clarity and streamlined call-to-action paths.",
+    result:
+      "Improved professional presentation and stronger readiness for direct inbound customer inquiries.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
