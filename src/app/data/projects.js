@@ -146,6 +146,27 @@ export const projects = [
     result:
       "Improved professional presentation and stronger readiness for direct inbound customer inquiries.",
   },
+  {
+    id: 8,
+    slug: "targo-landing",
+    title: "Targo Landing Page",
+    shortDescription: "High-performance logistics landing page with bold visual identity.",
+    description:
+      "Developed and deployed a conversion-focused landing page for Targo with a strong red/black brand style, service-focused sections, and clear CTA paths.",
+    image: "/images/projects/targo-landing.jpg",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://msn698.github.io/targo-landing/",
+    repoUrl: "https://github.com/msn698/targo-landing",
+    sourcePrivate: false,
+    role: "Designer + Developer",
+    stack: ["React", "Vite", "Tailwind CSS", "GitHub Pages"],
+    problem:
+      "Needed a modern, high-impact landing page to showcase logistics services and drive consultation intent.",
+    solution:
+      "Built a responsive one-page experience with strong hero messaging, service structure, and prominent contact CTAs.",
+    result:
+      "Improved visual credibility and created a fast public deployment link suitable for portfolio and client sharing.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
