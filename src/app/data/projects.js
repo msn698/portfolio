@@ -132,7 +132,7 @@ export const projects = [
     shortDescription: "Service business website for emergency vehicle recovery in Dubai.",
     description:
       "Built a conversion-focused service website for a Dubai vehicle recovery business, with clear service sections, trust-oriented layout, and fast contact intent flow.",
-    image: "/images/projects/5.png",
+    image: "/images/projects/yasir-vehicle-recovery.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: null,
     repoUrl: "https://github.com/msn698/Yasir-Vehicle-Recovery-Service-Dubai",
