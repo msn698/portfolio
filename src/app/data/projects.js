@@ -111,7 +111,7 @@ export const projects = [
     shortDescription: "Cinematic Web3 landing page with premium motion and legal-ready pages.",
     description:
       "Designed and shipped a production-ready Web3 landing experience featuring cinematic hero video, glassmorphism UI, responsive mobile navigation, scroll reveals, and GitHub Pages deployment.",
-    image: "/images/projects/6.png",
+    image: "/images/projects/web3-wild-landing.jpg",
     tags: ["Web", "JavaScript"],
     liveUrl: "https://msn698.github.io/web3-wild-landing/",
     repoUrl: "https://github.com/msn698/web3-wild-landing",
