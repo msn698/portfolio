@@ -6,8 +6,9 @@ import Link from "next/link";
 const isExternalUrl = (url) => /^https?:\/\//i.test(url);
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePrivate }) => {
+  const hasPreview = typeof previewUrl === "string" && previewUrl.trim().length > 0;
   const gitExternal = gitUrl ? isExternalUrl(gitUrl) : false;
-  const previewExternal = isExternalUrl(previewUrl);
+  const previewExternal = hasPreview ? isExternalUrl(previewUrl) : false;
 
   return (
     <div>
@@ -32,14 +33,18 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePri
           ) : (
             <div className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#555] opacity-70" title="Source code is private" />
           )}
-          <Link
-            href={previewUrl}
-            target={previewExternal ? "_blank" : undefined}
-            rel={previewExternal ? "noopener noreferrer" : undefined}
-            className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-          >
-            <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-          </Link>
+          {hasPreview ? (
+            <Link
+              href={previewUrl}
+              target={previewExternal ? "_blank" : undefined}
+              rel={previewExternal ? "noopener noreferrer" : undefined}
+              className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+            >
+              <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+            </Link>
+          ) : (
+            <div className="h-14 w-14 border-2 relative rounded-full border-[#555] opacity-70" title="Live preview unavailable" />
+          )}
         </div>
       </div>
       <div className="hover-lift text-white rounded-b-xl mt-3 bg-white/[0.03] border border-white/10 py-6 px-4">

@@ -41,6 +41,10 @@ export default function ProjectCaseStudyPage({ params }) {
 
   if (!project) return notFound();
 
+  const hasLiveUrl = typeof project.liveUrl === "string" && project.liveUrl.trim().length > 0;
+  const liveExternal = hasLiveUrl && project.liveUrl.startsWith("http");
+  const repoExternal = typeof project.repoUrl === "string" && project.repoUrl.startsWith("http");
+
   return (
     <main className="mx-auto w-full max-w-4xl mt-28 px-4 sm:px-6 lg:px-8 pb-16 text-white">
       <Link href="/#projects" className="text-slate-400 hover:text-white text-sm">
@@ -87,11 +91,28 @@ export default function ProjectCaseStudyPage({ params }) {
       </div>
 
       <div className="flex gap-3">
-        <Link href={project.liveUrl} className="px-4 py-2 rounded-lg bg-primary-500 text-white" target={project.liveUrl.startsWith("http") ? "_blank" : undefined} rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}>
-          Live Demo
-        </Link>
+        {hasLiveUrl ? (
+          <Link
+            href={project.liveUrl}
+            className="px-4 py-2 rounded-lg bg-primary-500 text-white"
+            target={liveExternal ? "_blank" : undefined}
+            rel={liveExternal ? "noopener noreferrer" : undefined}
+          >
+            Live Demo
+          </Link>
+        ) : (
+          <span className="px-4 py-2 rounded-lg border border-white/20 text-slate-300 text-sm">
+            Live demo unavailable
+          </span>
+        )}
+
         {project.repoUrl ? (
-          <Link href={project.repoUrl} className="px-4 py-2 rounded-lg border border-white/20 text-white" target={project.repoUrl.startsWith("http") ? "_blank" : undefined} rel={project.repoUrl.startsWith("http") ? "noopener noreferrer" : undefined}>
+          <Link
+            href={project.repoUrl}
+            className="px-4 py-2 rounded-lg border border-white/20 text-white"
+            target={repoExternal ? "_blank" : undefined}
+            rel={repoExternal ? "noopener noreferrer" : undefined}
+          >
             Source
           </Link>
         ) : (
