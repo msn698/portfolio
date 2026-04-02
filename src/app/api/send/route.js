@@ -5,6 +5,14 @@ const fromEmail = process.env.FROM_EMAIL;
 const ownerEmail = process.env.OWNER_EMAIL;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const MIN_FORM_FILL_MS = 4000;
+
+const rateLimitStore = globalThis.__contactRateLimitStore || new Map();
+if (!globalThis.__contactRateLimitStore) {
+  globalThis.__contactRateLimitStore = rateLimitStore;
+}
 
 function escapeHtml(value = "") {
   return value
@@ -15,11 +23,68 @@ function escapeHtml(value = "") {
     .replace(/'/g, "&#39;");
 }
 
-function validatePayload(email, subject, message) {
+function getClientIp(req) {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+  return req.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(key) {
+  const now = Date.now();
+  const entries = rateLimitStore.get(key) || [];
+  const recent = entries.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (recent.length >= RATE_LIMIT_MAX) {
+    rateLimitStore.set(key, recent);
+    return true;
+  }
+
+  recent.push(now);
+  rateLimitStore.set(key, recent);
+  return false;
+}
+
+function detectSpam(subject, message) {
+  const text = `${subject} ${message}`.toLowerCase();
+  const urlMatches = text.match(/https?:\/\//g) || [];
+  const spamSignals = [
+    "buy now",
+    "casino",
+    "viagra",
+    "seo service",
+    "crypto recovery",
+    "telegram",
+    "whatsapp group"
+  ];
+
+  if (urlMatches.length > 2) return "Too many links in message.";
+  if (spamSignals.some((term) => text.includes(term))) {
+    return "Message flagged as spam.";
+  }
+
+  return null;
+}
+
+function validatePayload(email, subject, message, website, startedAt) {
+  if (website && website.trim() !== "") return "Spam detected.";
+
+  if (startedAt) {
+    const elapsed = Date.now() - Number(startedAt);
+    if (!Number.isFinite(elapsed) || elapsed < MIN_FORM_FILL_MS) {
+      return "Form submitted too quickly.";
+    }
+  }
+
   if (!email || !subject || !message) return "Missing required fields.";
   if (!EMAIL_RE.test(email)) return "Invalid email address.";
   if (subject.length > 200) return "Subject is too long.";
   if (message.length > 5000) return "Message is too long.";
+
+  const spamError = detectSpam(subject, message);
+  if (spamError) return spamError;
+
   return null;
 }
 
@@ -53,8 +118,22 @@ export async function POST(req) {
     );
   }
 
-  const { email, subject, message } = await req.json();
-  const validationError = validatePayload(email, subject, message);
+  const { email, subject, message, website, startedAt } = await req.json();
+
+  const ip = getClientIp(req);
+  const emailKey = (email || "").trim().toLowerCase();
+  if (isRateLimited(`ip:${ip}`) || (emailKey && isRateLimited(`email:${emailKey}`))) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Too many requests. Please wait a bit and try again.",
+        code: "RATE_LIMITED",
+      },
+      { status: 429 }
+    );
+  }
+
+  const validationError = validatePayload(email, subject, message, website, startedAt);
 
   if (validationError) {
     return NextResponse.json(

@@ -9,6 +9,7 @@ const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [startedAt, setStartedAt] = useState(() => Date.now());
   const fallbackContactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const whatsappHref = whatsappNumber
@@ -24,6 +25,8 @@ const EmailSection = () => {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
+      website: e.target.website?.value || "",
+      startedAt,
     };
 
     try {
@@ -49,6 +52,7 @@ const EmailSection = () => {
 
       setEmailSubmitted(true);
       e.target.reset();
+      setStartedAt(Date.now());
     } catch (error) {
       setSubmitError(
         error?.message ||
@@ -107,6 +111,17 @@ const EmailSection = () => {
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
+            <input type="hidden" name="startedAt" value={startedAt} readOnly />
+            <div className="sr-only" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                name="website"
+                id="website"
+                type="text"
+                tabIndex="-1"
+                autoComplete="off"
+              />
+            </div>
             <div className="mb-6">
               <label
                 htmlFor="email"
