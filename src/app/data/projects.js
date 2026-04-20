@@ -167,6 +167,27 @@ export const projects = [
     result:
       "Improved visual credibility and created a fast public deployment link suitable for portfolio and client sharing.",
   },
+  {
+    id: 9,
+    slug: "faceless-channel-saas",
+    title: "Faceless Channel SaaS",
+    shortDescription: "AI faceless video generation SaaS with billing, auth, and worker-based rendering.",
+    description:
+      "Built and deployed a full-stack AI video SaaS with script generation, voiceover/render pipeline, social publishing, affiliate tracking, and Paystack billing on a dedicated server.",
+    image: "/images/projects/faceless-channel.jpg",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://facelesschannel.app",
+    repoUrl: null,
+    sourcePrivate: true,
+    role: "Full-Stack Developer",
+    stack: ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "BullMQ", "Paystack"],
+    problem:
+      "Creators needed a faster way to produce and publish faceless videos without stitching together multiple tools manually.",
+    solution:
+      "Implemented an end-to-end product with AI-assisted content pipeline, queued workers, billing/credits, and production deployment with reliability fixes.",
+    result:
+      "Delivered a production-ready platform with automated generation workflows, payment integration, and a public launch at facelesschannel.app.",
+  },
 ];
 
 export function getProjectBySlug(slug) {
