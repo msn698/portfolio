@@ -1,35 +1,15 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
-import { projects } from "../data/projects";
-
-const projectsData = projects.map((project) => ({
-  id: project.id,
-  slug: project.slug,
-  title: project.title,
-  description: project.shortDescription,
-  image: project.image,
-  tag: ["All", ...project.tags],
-  gitUrl: project.repoUrl,
-  previewUrl: project.liveUrl,
-  sourcePrivate: project.sourcePrivate,
-}));
+import { getOrderedProjects } from "../data/projects";
 
 const ProjectsSection = () => {
-  const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
-
-  const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
-  );
+  const orderedProjects = getOrderedProjects().slice(0, 4);
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -41,47 +21,25 @@ const ProjectsSection = () => {
       <h2 className="text-center text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
         Projects
       </h2>
-      <p className="text-center text-slate-400 max-w-2xl mx-auto mb-6">
-        A mix of product builds and practical tools focused on performance and usability.
+      <p className="text-center text-slate-400 max-w-2xl mx-auto mb-10">
+        Featured work selected to keep this section clean. View all projects for the complete portfolio.
       </p>
-      <div className="text-white flex flex-wrap justify-center items-center gap-2 py-4">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="JavaScript"
-          isSelected={tag === "JavaScript"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Python"
-          isSelected={tag === "Python"}
-        />
-      </div>
+
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project, index) => (
+        {orderedProjects.map((project, index) => (
           <motion.li
-            key={index}
+            key={project.id}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.3, delay: index * 0.2 }}
           >
             <ProjectCard
-              key={project.id}
               title={project.title}
-              description={project.description}
+              description={project.shortDescription}
               imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
+              gitUrl={project.repoUrl}
+              previewUrl={project.liveUrl}
               sourcePrivate={project.sourcePrivate}
             />
             <Link
@@ -92,6 +50,31 @@ const ProjectsSection = () => {
             </Link>
           </motion.li>
         ))}
+
+        <motion.li
+          variants={cardVariants}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+          transition={{ duration: 0.3, delay: 0.9 }}
+          className="md:col-span-1"
+        >
+          <Link
+            href="/projects"
+            className="block h-full rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] transition-all p-6 min-h-[360px] md:min-h-[420px]"
+          >
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-wider text-slate-400 mb-3">Portfolio</p>
+                <h3 className="text-2xl font-semibold text-white mb-3">View All Projects</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Explore the full list, including all shipped demos, production builds, and detailed case studies.
+                </p>
+              </div>
+
+              <div className="text-primary-400 text-sm font-medium mt-6">Open full projects page →</div>
+            </div>
+          </Link>
+        </motion.li>
       </ul>
     </section>
   );

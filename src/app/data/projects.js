@@ -190,6 +190,25 @@ export const projects = [
   },
 ];
 
+export const projectDisplayOrder = [
+  "web3-wild-landing",
+  "targo-landing",
+  "faceless-channel-saas",
+  "vouchpro",
+  "yasir-vehicle-recovery-service-dubai",
+  "portfolio-website",
+];
+
+export function getOrderedProjects() {
+  const rank = new Map(projectDisplayOrder.map((slug, index) => [slug, index]));
+  return [...projects].sort((a, b) => {
+    const aRank = rank.has(a.slug) ? rank.get(a.slug) : Number.MAX_SAFE_INTEGER;
+    const bRank = rank.has(b.slug) ? rank.get(b.slug) : Number.MAX_SAFE_INTEGER;
+    if (aRank !== bRank) return aRank - bRank;
+    return a.id - b.id;
+  });
+}
+
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug);
 }
