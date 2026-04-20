@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const orderedProjects = getOrderedProjects().slice(0, 4);
+  const orderedProjects = getOrderedProjects().slice(0, 5);
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -55,23 +55,22 @@ const ProjectsSection = () => {
           variants={cardVariants}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          transition={{ duration: 0.3, delay: 0.9 }}
-          className="md:col-span-1"
+          transition={{ duration: 0.3, delay: 1.1 }}
         >
-          <Link
-            href="/projects"
-            className="block h-full rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] transition-all p-6 min-h-[360px] md:min-h-[420px]"
-          >
-            <div className="h-full flex flex-col justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-wider text-slate-400 mb-3">Portfolio</p>
-                <h3 className="text-2xl font-semibold text-white mb-3">View All Projects</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  Explore the full list, including all shipped demos, production builds, and detailed case studies.
-                </p>
+          <Link href="/projects" className="block group">
+            <div className="hover-lift h-52 md:h-72 rounded-t-xl relative overflow-hidden border border-white/10 bg-[#151515]">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 via-transparent to-white/5" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center px-6">
+                  <p className="text-xs uppercase tracking-wider text-slate-400 mb-3">Portfolio</p>
+                  <h3 className="text-2xl font-semibold text-white">View All Projects</h3>
+                  <p className="text-slate-300 text-sm mt-2">See full case studies and shipped work</p>
+                </div>
               </div>
-
-              <div className="text-primary-400 text-sm font-medium mt-6">Open full projects page →</div>
+            </div>
+            <div className="hover-lift text-white rounded-b-xl mt-3 bg-white/[0.03] border border-white/10 py-6 px-4">
+              <h5 className="text-xl font-semibold mb-2">All Projects</h5>
+              <p className="text-[#ADB7BE]">Browse the complete portfolio in one place.</p>
             </div>
           </Link>
         </motion.li>
