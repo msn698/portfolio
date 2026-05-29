@@ -190,10 +190,13 @@ const HeroSection = () => {
             <motion.div
               animate={{ y: [0, 5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              className="absolute -bottom-2 -left-2 z-20 bg-[#1a1a1a] border border-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg"
+              className="absolute -bottom-2 -left-2 z-20 bg-[#1a1a1a] border border-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg inline-flex items-center gap-1.5"
               style={{ transform: "translateZ(30px)" }}
             >
-              🔥 Dubai-based
+              <svg className="w-3 h-3 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              Dubai-based
             </motion.div>
 
             <div className="relative rounded-2xl bg-[#171717] border border-white/10 p-4 overflow-hidden">

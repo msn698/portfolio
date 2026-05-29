@@ -16,11 +16,27 @@ const navLinks = [
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.path.replace("#", ""));
+    const observers = sectionIds.map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
   }, []);
 
   return (
@@ -67,7 +83,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-6 mt-0">
               {navLinks.map((link, index) => (
                 <li key={index}>
-                  <NavLink href={link.path} title={link.title} />
+                  <NavLink href={link.path} title={link.title} active={activeSection === link.path.replace("#", "")} />
                 </li>
               ))}
             </ul>

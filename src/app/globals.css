@@ -18,7 +18,18 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-padding-top: 80px;
 }
+
+/* ── Custom scrollbar ──────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0a0a0b; }
+::-webkit-scrollbar-thumb { background: #2a2a2e; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #ef4444; }
+
+/* ── Text selection ───────────────────────────────── */
+::selection { background: rgba(239, 68, 68, 0.25); color: #fff; }
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -349,4 +360,14 @@ main { position: relative; z-index: 1; }
   background: linear-gradient(90deg, #ef4444, #f97316);
   border-radius: 99px;
   margin-bottom: 12px;
+}
+
+/* ── prefers-reduced-motion ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
 }

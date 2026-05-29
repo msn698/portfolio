@@ -44,30 +44,38 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl, sourcePri
           sizes="(max-width: 768px) 100vw, 33vw"
           className="hover-zoom object-cover object-top"
         />
-        <div className="overlay items-center justify-center absolute inset-0 bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
+        <div className="overlay items-center justify-center gap-2.5 absolute inset-0 bg-black/75 backdrop-blur-sm opacity-0 hidden group-hover:flex group-hover:opacity-100 transition-all duration-300">
           {gitUrl ? (
             <Link
               href={gitUrl}
               target={gitExternal ? "_blank" : undefined}
               rel={gitExternal ? "noopener noreferrer" : undefined}
-              className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link transition-all duration-200 hover:scale-110"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 bg-white/10 text-white text-sm font-medium hover:bg-white/20 hover:border-white/50 transition-all duration-200 cursor-pointer"
             >
-              <CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+              <CodeBracketIcon className="h-4 w-4" />
+              Code
             </Link>
           ) : (
-            <div className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#555] opacity-70" title="Source code is private" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-500 text-sm font-medium cursor-not-allowed select-none">
+              <CodeBracketIcon className="h-4 w-4" />
+              Private
+            </span>
           )}
           {hasPreview ? (
             <Link
               href={previewUrl}
               target={previewExternal ? "_blank" : undefined}
               rel={previewExternal ? "noopener noreferrer" : undefined}
-              className="h-14 w-14 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link transition-all duration-200 hover:scale-110"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black text-sm font-semibold hover:bg-slate-100 transition-all duration-200 cursor-pointer"
             >
-              <EyeIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+              <EyeIcon className="h-4 w-4" />
+              Preview
             </Link>
           ) : (
-            <div className="h-14 w-14 border-2 relative rounded-full border-[#555] opacity-70" title="Live preview unavailable" />
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-slate-500 text-sm font-medium cursor-not-allowed select-none">
+              <EyeIcon className="h-4 w-4" />
+              No preview
+            </span>
           )}
         </div>
       </div>
