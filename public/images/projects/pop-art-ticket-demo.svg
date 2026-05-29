@@ -1,0 +1,18 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0A0F1F"/>
+  <circle cx="220" cy="170" r="140" fill="#FF6A3D" opacity="0.75"/>
+  <circle cx="980" cy="130" r="110" fill="#7A8DFF" opacity="0.72"/>
+  <circle cx="965" cy="640" r="190" fill="#F73FA4" opacity="0.55"/>
+  <rect x="110" y="230" width="980" height="430" rx="30" fill="#121B34" stroke="#3A4972" stroke-width="4"/>
+  <rect x="150" y="280" width="590" height="320" rx="20" fill="#0D1427"/>
+  <rect x="770" y="280" width="280" height="140" rx="20" fill="#101B33"/>
+  <rect x="770" y="450" width="280" height="150" rx="20" fill="#101B33"/>
+  <text x="170" y="355" fill="white" font-size="88" font-family="Arial, sans-serif" font-weight="900">POPICON</text>
+  <text x="170" y="420" fill="#9DB0E7" font-size="30" font-family="Arial, sans-serif">Ticket Experience Demo</text>
+  <text x="170" y="485" fill="#FF6A3D" font-size="32" font-family="Arial, sans-serif" font-weight="700">BOOK NOW  •  LIMITED VIP</text>
+  <text x="170" y="550" fill="#C5D2F5" font-size="24" font-family="Arial, sans-serif">Counter animations • Dynamic checkout • Contact redirect popup</text>
+  <text x="802" y="347" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">VISITORS</text>
+  <text x="802" y="385" fill="#B4C5F0" font-size="42" font-family="Arial, sans-serif" font-weight="900">12,000+</text>
+  <text x="802" y="520" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">VIP LEFT</text>
+  <text x="802" y="558" fill="#FF6A3D" font-size="42" font-family="Arial, sans-serif" font-weight="900">180</text>
+</svg>
