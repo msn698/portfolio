@@ -2,11 +2,32 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
+const RocketIcon = () => (
+  <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.82m2.56-5.84a14.98 14.98 0 00-2.58 5.84m2.699 2.7a14.98 14.98 0 00-2.578 5.84" />
+  </svg>
+);
+const UsersIcon = () => (
+  <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
+const TrophyIcon = () => (
+  <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+  </svg>
+);
+const BoltIcon = () => (
+  <svg className="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+);
+
 const achievementsList = [
-  { metric: "Projects",    value: "10",      postfix: "+",  icon: "🚀" },
-  { metric: "Users",       value: "100,000", prefix: "~",   icon: "👥" },
-  { metric: "Awards",      value: "5",                      icon: "🏆" },
-  { metric: "Years Exp.",  value: "3",                      icon: "⚡" },
+  { metric: "Projects",    value: "10",      postfix: "+",  icon: <RocketIcon /> },
+  { metric: "Users",       value: "100,000", prefix: "~",   icon: <UsersIcon /> },
+  { metric: "Awards",      value: "5",                      icon: <TrophyIcon /> },
+  { metric: "Years Exp.",  value: "3",                      icon: <BoltIcon /> },
 ];
 
 const cardVariants = {
@@ -56,7 +77,7 @@ function StatCard({ achievement, index, inView }) {
       style={{ transformStyle: "preserve-3d" }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary-500/0 group-hover:from-primary-500/10 to-transparent transition-all duration-500 rounded-2xl" />
-      <div className="text-2xl mb-2 select-none">{achievement.icon}</div>
+      <div className="mb-2 select-none">{achievement.icon}</div>
       <h2 className="text-white text-2xl sm:text-3xl font-bold flex flex-row items-end relative z-10" style={{ fontFamily: 'var(--font-inter, Inter, sans-serif)' }}>
         {achievement.prefix}
         <span>{display}</span>
