@@ -4,31 +4,28 @@ import Link from "next/link";
 import ProjectCard from "./ProjectCard";
 import { motion, useInView } from "framer-motion";
 import { getOrderedProjects } from "../data/projects";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const headingRef = useScrollReveal({ y: 40, duration: 0.8 });
+  const subRef = useScrollReveal({ y: 28, duration: 0.7, delay: 0.12 });
 
   const orderedProjects = getOrderedProjects().slice(0, 5);
 
   return (
     <section id="projects" className="py-10">
       <div className="section-accent" />
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-10"
-      >
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+      <div className="text-center mb-10">
+        <h2 ref={headingRef} className="text-3xl sm:text-4xl font-bold text-white mb-3 opacity-0">
           Selected Projects
         </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto">
+        <p ref={subRef} className="text-slate-400 max-w-2xl mx-auto opacity-0">
           A curated selection of shipped work. Each project is built with performance
           and conversion in mind.
         </p>
-      </motion.div>
+      </div>
 
       <ul ref={ref} className="grid md:grid-cols-3 gap-6 md:gap-8" style={{ perspective: "1000px" }}>
         {orderedProjects.map((project, index) => (

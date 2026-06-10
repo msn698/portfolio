@@ -1,9 +1,18 @@
 "use client";
-import React, { useRef } from "react";
-import Image from "next/image";
+import React from "react";
+import dynamic from "next/dynamic";
 import { TypeAnimation } from "react-type-animation";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
+
+const HeroScene = dynamic(() => import("./HeroScene"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-16 h-16 rounded-full border border-white/10 animate-pulse bg-white/[0.02]" />
+    </div>
+  ),
+});
 
 const Orb = ({ className, style }) => (
   <div className={`absolute rounded-full pointer-events-none orb-pulse ${className}`} style={style} />
@@ -14,26 +23,6 @@ const HeroSection = () => {
   const whatsappHref = whatsappNumber
     ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hi Saeed, I saw your portfolio and want to discuss a project.")}`
     : null;
-
-  const cardRef = useRef(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [12, -12]), { stiffness: 200, damping: 24 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-12, 12]), { stiffness: 200, damping: 24 });
-  const glareX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
-  const glareY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
-
-  const handleMouseMove = (e) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   const containerVariants = {
     hidden: {},
@@ -134,8 +123,8 @@ const HeroSection = () => {
                 aria-label="Chat on WhatsApp"
               >
                 <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.882l6.197-1.484A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.013-1.374l-.36-.213-3.681.882.935-3.576-.234-.369A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.882l6.197-1.484A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.013-1.374l-.36-.213-3.681.882.935-3.576-.234-.369A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z" />
                 </svg>
                 WhatsApp Me
               </a>
@@ -151,67 +140,36 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* ── Right: 3D tilt image card ───────────────── */}
+        {/* ── Right: 3D scene ─────────────────────────── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-5"
-          style={{ perspective: "1000px" }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-5 relative"
         >
+          {/* Floating badges */}
           <motion.div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-            className="section-glow noise relative rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 backdrop-blur-sm overflow-hidden"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-4 right-4 z-20 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg shadow-primary-900/40 pointer-events-none"
           >
-            {/* gradient overlay */}
-            <motion.div
-              className="absolute inset-0 pointer-events-none rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: useTransform(
-                  [glareX, glareY],
-                  ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(255,255,255,0.06) 0%, transparent 60%)`
-                ),
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 via-transparent to-secondary-500/10 pointer-events-none rounded-3xl" />
-
-            {/* floating badges */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg shadow-primary-900/40"
-              style={{ transform: "translateZ(40px)" }}
-            >
-              Open to work
-            </motion.div>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-              className="absolute -bottom-2 -left-2 z-20 bg-[#1a1a1a] border border-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg inline-flex items-center gap-1.5"
-              style={{ transform: "translateZ(30px)" }}
-            >
-              <svg className="w-3 h-3 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-              </svg>
-              Dubai-based
-            </motion.div>
-
-            <div className="relative rounded-2xl bg-[#171717] border border-white/10 p-4 overflow-hidden">
-              <Image
-                src="/images/hero-image.png"
-                alt="Mohammed Saeed - Web Developer and Project Manager"
-                width={420}
-                height={420}
-                className="w-full h-auto object-contain"
-                priority
-                loading="eager"
-                quality={90}
-              />
-            </div>
+            Open to work
           </motion.div>
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-6 left-4 z-20 bg-[#1a1a1a] border border-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg inline-flex items-center gap-1.5 pointer-events-none"
+          >
+            <svg className="w-3 h-3 text-red-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            Dubai-based
+          </motion.div>
+
+          {/* 3D Canvas */}
+          <div className="w-full h-[380px] sm:h-[460px] lg:h-[520px]">
+            <HeroScene />
+          </div>
         </motion.div>
       </div>
     </section>
