@@ -1,18 +1,9 @@
 "use client";
 import React from "react";
-import dynamic from "next/dynamic";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const HeroScene = dynamic(() => import("./HeroScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 rounded-full border border-white/10 animate-pulse bg-white/[0.02]" />
-    </div>
-  ),
-});
+import HeroVisual from "./HeroVisual";
 
 const Orb = ({ className, style }) => (
   <div className={`absolute rounded-full pointer-events-none orb-pulse ${className}`} style={style} />
@@ -166,9 +157,9 @@ const HeroSection = () => {
             Dubai-based
           </motion.div>
 
-          {/* 3D Canvas */}
+          {/* 3D Canvas (lazy, with non-3D fallback for low-power devices) */}
           <div className="w-full h-[380px] sm:h-[460px] lg:h-[520px]">
-            <HeroScene />
+            <HeroVisual />
           </div>
         </motion.div>
       </div>
