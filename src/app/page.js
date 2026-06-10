@@ -12,6 +12,7 @@ import ServicePackagesSection from "./components/ServicePackagesSection";
 import FAQSection from "./components/FAQSection";
 import StickyWhatsAppCTA from "./components/StickyWhatsAppCTA";
 import ScrollProgress from "./components/ScrollProgress";
+import SceneBackground from "./components/SceneBackground";
 
 const baseUrl = "https://msaeed.tech";
 
@@ -45,6 +46,7 @@ const faqSchemaItems = [
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
+      <SceneBackground />
       <ScrollProgress />
       <Script
         id="home-seo-schema"
@@ -87,7 +89,7 @@ export default function Home() {
       />
 
       <Navbar />
-      <div className="mx-auto w-full max-w-6xl mt-28 px-4 sm:px-6 lg:px-8 py-4">
+      <div className="relative z-10 mx-auto w-full max-w-6xl mt-28 px-4 sm:px-6 lg:px-8 py-4">
         <HeroSection />
         <TrustStrip />
         <AchievementsSection />

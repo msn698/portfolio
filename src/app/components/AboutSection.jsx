@@ -2,6 +2,7 @@
 import React, { useRef, useTransition, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import TabButton from "./TabButton";
+import { useScrubStagger } from "../../hooks/useScrollReveal";
 
 const TAB_DATA = [
   {
@@ -96,6 +97,7 @@ const AboutSection = () => {
   const [, startTransition] = useTransition();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const scrubRef = useScrubStagger();
 
   const handleTabChange = (id) => {
     startTransition(() => setTab(id));
@@ -114,16 +116,18 @@ const AboutSection = () => {
           style={{ background: "radial-gradient(circle, rgba(239,68,68,0.6) 0%, transparent 70%)" }} />
 
         <div className="section-accent" />
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
-        <p className="text-base lg:text-lg text-slate-300 leading-relaxed">
+        <div ref={scrubRef}>
+        <h2 data-scrub className="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+        <p data-scrub className="text-base lg:text-lg text-slate-300 leading-relaxed">
           I build modern, conversion-focused websites for startups and businesses.
           My focus is clean UI, fast performance, and practical outcomes — so your
           website does more than just look good.
         </p>
-        <p className="text-base lg:text-lg text-slate-300 leading-relaxed mt-3">
+        <p data-scrub className="text-base lg:text-lg text-slate-300 leading-relaxed mt-3">
           I care about shipping work that is reliable, measurable, and aligned with
           business goals, from first impression to lead capture.
         </p>
+        </div>
 
         <div className="grid sm:grid-cols-3 gap-3 mt-6" style={{ perspective: "600px" }}>
           <InfoCard label="Focus"    value="High-converting business websites" delay={0} />
