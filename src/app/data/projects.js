@@ -188,12 +188,56 @@ export const projects = [
     result:
       "Delivered a production-ready platform with automated generation workflows, payment integration, and a public launch at facelesschannel.app.",
   },
+  {
+    id: 10,
+    slug: "target-systems-property-management",
+    title: "Target Systems Property Management",
+    shortDescription: "Property management website with tenant portal for an Abu Dhabi rental business.",
+    description:
+      "Built a property management and general maintenance website for an Abu Dhabi rental business, featuring available unit listings with pricing and amenities, a tenant portal entry point, and trust-focused service sections.",
+    image: "/images/projects/target-system.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://target-system.vercel.app/",
+    repoUrl: null,
+    sourcePrivate: true,
+    role: "Designer + Developer",
+    stack: ["Next.js", "React", "Vercel"],
+    problem:
+      "A rental property business needed a professional online presence to list available units and give tenants a clear path to leases, payments, and maintenance requests.",
+    solution:
+      "Built a clean dark-themed site with unit listings (pricing, size, amenities), tenant login/portal entry, and transparent service messaging backed by clear contact paths.",
+    result:
+      "A credible, tenant-focused web presence that surfaces availability instantly and channels both prospects and existing tenants to the right action.",
+  },
+  {
+    id: 11,
+    slug: "cyberpunk-portfolio",
+    title: "Cyberpunk Portfolio",
+    shortDescription: "Terminal-inspired cyberpunk portfolio with kinetic HUD interface.",
+    description:
+      "Designed an alternate personal portfolio with a cyberpunk terminal aesthetic — live HUD readouts, monospace typography, a profile rendered as JSON in a simulated shell, and particle-driven hero visuals.",
+    image: "/images/projects/cyberpunk-portfolio.png",
+    tags: ["Web", "JavaScript"],
+    liveUrl: "https://cyberpunk-portfolio-smoky-phi.vercel.app",
+    repoUrl: null,
+    sourcePrivate: true,
+    role: "Designer + Developer",
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    problem:
+      "Wanted a bold, memorable portfolio concept that demonstrates creative range beyond conventional business site design.",
+    solution:
+      "Built a hand-coded cyberpunk interface with live clock/coordinate HUD elements, terminal-style profile output, animated particles, and a fully responsive monospace design system.",
+    result:
+      "A distinctive showcase piece that proves design versatility and strong command of hand-rolled CSS and vanilla JavaScript animation.",
+  },
 ];
 
 export const projectDisplayOrder = [
   "web3-wild-landing",
   "targo-landing",
   "faceless-channel-saas",
+  "target-systems-property-management",
+  "cyberpunk-portfolio",
   "vouchpro",
   "yasir-vehicle-recovery-service-dubai",
   "portfolio-website",
