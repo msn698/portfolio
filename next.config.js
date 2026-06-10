@@ -4,9 +4,12 @@
 //   styled-jsx and framer-motion inline styles.
 // - va.vercel-scripts.com / vitals.vercel-insights.com serve @vercel/analytics
 //   and speed-insights.
+// Dev-only: webpack eval source maps require 'unsafe-eval'; never shipped in prod.
+const devEval = process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  `script-src 'self' 'unsafe-inline'${devEval} https://va.vercel-scripts.com`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob:",
   "font-src 'self' data: https://fonts.gstatic.com",
