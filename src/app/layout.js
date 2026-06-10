@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import Script from 'next/script'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import CursorSpotlight from './components/CursorSpotlight'
 
 const baseUrl = 'https://msaeed.tech';
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${inter.className} ${transcity.variable}`}>
+        <CursorSpotlight />
         {children}
         <SpeedInsights />
         <Analytics />
